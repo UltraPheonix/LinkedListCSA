@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 //NOTE US USING THE GENERIC SYNTAX AGAIN
 public class LinkedList<E extends Comparable<E>>{
 
@@ -35,7 +37,13 @@ public class LinkedList<E extends Comparable<E>>{
     }
 
     public E delete(E value){
-        return delete(value, front);
+        if(front.value().equals(value)){
+            E val = front.value();
+            front = front.next();
+            return val;
+        }else{
+            return delete(value, front);
+        }
     }
 
     private E delete(E value, ListNode<E> pt){
@@ -88,6 +96,8 @@ public class LinkedList<E extends Comparable<E>>{
         list.add(5);
         System.out.println(list.toString());
         list.add(6);
+        System.out.println(list.toString());
+        list.delete(5);
         System.out.println(list.toString());
     }
 }
