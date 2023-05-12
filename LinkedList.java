@@ -7,17 +7,17 @@ public class LinkedList<E extends Comparable<E>>{
      * It will always point to the first value in the List, and we can use it to use as a base for other pointers to
      * come from
      */
-    public ListNode<E> root;
+    public ListNode<E> front;
 
     // No constructor needed, java automatically generates a default constructor
 
 
     public void add(E newValue){
-        if(root == null){
-            root = new ListNode<>(newValue);
+        if(front == null){
+            front = new ListNode<>(newValue);
         }else{
             //Note the usage of pass by reference, pt will only POINT to the memory address that is used in root
-            add(newValue, root);
+            add(newValue, front);
         }
     }
 
@@ -35,7 +35,7 @@ public class LinkedList<E extends Comparable<E>>{
     }
 
     public E delete(E value){
-        return delete(value, root);
+        return delete(value, front);
     }
 
     private E delete(E value, ListNode<E> pt){
@@ -49,7 +49,7 @@ public class LinkedList<E extends Comparable<E>>{
     }
 
     public E get(E value){
-        return get(value, root);
+        return get(value, front);
     }
 
     private E get(E value, ListNode<E> pt){
@@ -63,7 +63,7 @@ public class LinkedList<E extends Comparable<E>>{
 
     @Override
     public String toString() {
-        ListNode<E> pt = root;
+        ListNode<E> pt = front;
         String s = "";
 
         while(pt != null){
